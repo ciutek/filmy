@@ -1,41 +1,44 @@
-import logo from './logo.svg';
 import './App.css';
-
+import "bootstrap/dist/css/bootstrap.css";
 
 function App() {
+  function onSubmit(event) {
+    event.preventDefault();
+
+    const title = event.target.elements.filmTitle.value;
+    const type = event.target.elements.filmType.value;
+    console.log(`tytul: ${title}, rodzaj: ${type}`);
+  }
+
   return (
-    <div className="App">
-      {/* <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header> */}
-      <form>
-  <div class="mb-3">
-    <label for="exampleInputEmail1" class="form-label">kakaraka</label>
-    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"/>
-    <div id="emailHelp" class="form-text">nie chcesz</div>
-  </div>
-  <div class="mb-3">
-    <label for="exampleInputPassword1" class="form-label">haslo</label>
-    <input type="password" class="form-control" id="exampleInputPassword1"/>
-  </div>
-  <div class="mb-3 form-check">
-    <input type="checkbox" class="form-check-input" id="exampleCheck1"/>
-    <label class="form-check-label" for="exampleCheck1">get lost</label>
-  </div>
-  <button type="submit" class="btn btn-primary">susuususu   </button>
-</form>
-    </div>
+    <>
+      <form onSubmit={onSubmit} method="post">
+        <div className="form-group">
+          <label htmlFor="filmTitle">Tytuł filmu</label>
+          <input
+            type="text"
+            name="filmTitle"
+            id="filmTitle"
+            className="form-control"
+          />
+        </div>
+        <div className="form-group">
+          <label htmlFor="filmType">Rodzaj</label>
+          <select name="filmType" id="filmType" className="form-control">
+            <option></option>
+            <option value="1">Komedia</option>
+            <option value="2">Obyczajowy</option>
+            <option value="3">Sensacyjny</option>
+            <option value="4">Horror</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <button type="submit" className="btn btn-primary">
+            Dodaj
+          </button>
+        </div>
+      </form>
+    </>
   );
 }
 
